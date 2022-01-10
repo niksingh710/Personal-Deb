@@ -14,3 +14,13 @@ fi
 if hash colorscript 2>/dev/null;then
   colorscript -r
 fi
+
+if hash vim 2>/dev/null;then
+  export EDITOR='vim'
+  if hash nvim 2>/dev/null;then
+    export EDITOR='nvim'
+    if hash lvim 2>/dev/null;then
+      export EDITOR='lvim'
+    fi
+  fi
+fi
