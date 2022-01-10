@@ -1,0 +1,57 @@
+#!/bin/bash
+# custom ppa adder
+
+help(){
+cat << EOF
+-p <ppa> : use this to ppa-purge. (will purge associated packages to) require ppa-purge to be installed.
+-r <ppa> : use this to use -r flag in add-apt-repository.
+-a <ppa> : this is the defafult set no need to use will add repository.
+EOF
+exit
+}
+
+ppa-purge(){
+	if hash ppa-purge 2>/dev/null;then
+		sudo ppa-purge ppa:$1
+		sudo apt update && apt list --upgradeable
+	else
+		echo "ppa purge is not installed"
+	fi
+	exit
+}
+
+remove(){
+	echo "removing $1....."
+	if hash add-apt-repository 2>/dev/null;then
+		sudo add-apt-repository -r ppa:$1
+		sudo apt update && apt list --upgradeable
+	else
+		echo "Unable to find add-apt-repository binary please check Path variable"
+	fi
+	exit
+}
+
+add(){
+	echo "adding $1...."
+	if hash add-apt-repository 2>/dev/null;then
+		sudo add-apt-repository ppa:$1
+		sudo apt update && apt list --upgradeable
+	else
+		echo "Unable to find add-apt-repository binary please check Path variable"
+	fi
+		
+	exit
+}
+
+while getopts "hr:p:" arg; do
+	case $arg in
+		h) help;;
+		p) ppa-purge $OPTARG;;
+		r) remove $OPTARG;;
+		a) add $OPTARG;;
+		*) echo "Invalid option"
+			help 1;;
+	esac
+done
+
+add $1

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DIRS=(
+    "$HOME"
+    "$HOME/Downloads"
+    "$HOME/Pictures"
+    "$HOME/Music"
+    "$HOME/Videos"
+    "$HOME/Documents"
+    "$HOME/Personal"
+    "/media/niksingh710/HDD"
+)
+
+for i in "${DIRS[@]}"; do
+    if [ -d "$i/temp" ]; then
+        rm -rf "$i/temp/"*
+        rm -rf "$i/temp/".*
+    fi
+done
+exit
+

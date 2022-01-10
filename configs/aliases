@@ -1,0 +1,82 @@
+# This file is a list of aliases used by Nikhil Singh
+
+# common System aliases
+alias install="sudo apt install -y $@"
+alias in="install $@"
+alias uninstall="sudo apt purge -y --remove $@"
+alias un="uninstall $@"
+alias update="sudo apt update && apt list --upgradeable"
+alias upgrade="sudo apt upgrade -y"
+alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean"
+alias myip="echo `hostname -I | awk '{print $1}'`"
+alias python="python3"
+alias pip="pip3"
+alias xdg-open="xdg-open 2>/dev/null"
+alias cpufreq='watch -n1 -t "grep \"^[c]pu MHz\" /proc/cpuinfo"'
+alias cpu-governer='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias cpu-turbo='[ $(cat /sys/devices/system/cpu/intel_pstate/no_turbo) = 0 ] && echo "Turbo: On" || echo "Turbo: Off"'
+alias gc='git clone $@'
+alias tb='nc termbin.com 9999'
+
+# SSH 
+alias ssh-list="ss | grep -i ssh"
+alias ssh-status="sudo service ssh status"
+alias ssh-start="sudo service ssh start"
+alias ssh-stop="sudo service ssh stop"
+alias ssh-restart="sudo service ssh restart"
+alias ssh-terminate="pkill -o -u $USER sshd"
+
+if hash exa 2>/dev/null;then    
+  alias l='exa -lahF --color=always --icons --sort=size --group-directories-first'
+  alias lss='exa -hF --color=always --icons --sort=size --group-directories-first'
+  alias ls='exa -lhF --color=always --icons --sort=size --group-directories-first'
+  alias lst='exa -lahFT --color=always --icons --sort=size --group-directories-first'
+fi 
+
+if hash unimatrix 2>/dev/null;then
+  alias matrix='unimatrix -f -l ocCgGkS -s 96'
+fi
+
+if hash lvim 2>/dev/null;then
+	alias vim='lvim'
+	alias nvim='lvim'
+	alias vi='lvim'
+fi
+
+if hash figlet 2>/dev/null;then
+	alias stime='watch -n1 -t "date +%T | figlet "'
+fi
+
+if hash 0x0 2>/dev/null;then
+  alias transfer='0x0'
+fi
+
+if hash fm6000 2>/dev/null;then
+  alias sneofetch='fm6000 -r -c random'
+fi
+
+if hash speed-test 2>/dev/null;then
+  alias speedtest='speed-test'
+fi
+
+if hash xclip 2>/dev/null;then
+  alias copy='xclip -selection clipboard'
+  alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'
+  alias tb='nc termbin.com 9999 | pcopy'
+fi
+
+
+
+# custom alias on check based
+[ -d "$HOME/Downloads/temp" ] && alias cdt="cd $HOME/Downloads/temp"
+[ -d "$HOME/Personal/configs" ] && alias cdc="cd $HOME/Personal/configs"
+[ -d "/media/HDD/Sharing" ] && alias cds="cd /media/HDD/Sharing"
+[ -d "$HOME/Personal/bin" ] && alias cdb="cd $HOME/Personal/bin"
+
+[ -f "$HOME/Personal/configs/aliases" ] && alias ealias="vim $HOME/Personal/configs/aliases"
+[ -f "$HOME/Personal/configs/pathmod" ] && alias epath="vim $HOME/Personal/configs/pathmod"
+[ -f "$HOME/Personal/configs/nikhilrc" ] && alias erc="vim $HOME/Personal/configs/nikhilrc"
+[ -f "$HOME/Personal/misc/ascii" ] && alias neofetch="neofetch --ascii ~/Personal/misc/ascii"
+
+# quick access variable
+export HDD="/media/niksingh710/HDD/"

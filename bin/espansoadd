@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -eq 2 ];then
+	cat <<- EOF >> ~/.config/espanso/default.yml
+	
+  - trigger: "$1"
+    replace: "$2"
+EOF
+else
+	if [[ $1 == "--help" || $1 == "-h" ]];then
+		echo " espanso adder: espansoadd :trigger :toReplace"
+	else
+		echo "Please Enter some valid Argument"
+	fi
+fi
+

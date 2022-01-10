@@ -1,0 +1,36 @@
+#!/bin/bash
+
+help(){
+  cat << EOF
+  -a : This will show the full timetable with faculty details.
+  -f : This will only show the faculty detail.
+  -t : This will show timetable (Optional) as this will work without passing.
+EOF
+exit
+}
+
+TPATH="$HOME/Pictures/collage/timetable"
+
+show(){
+  if ! hash feh 2>/dev/null;then
+    echo "It seems feh command is not installed in system."
+    exit
+  fi
+  if [ -f "$TPATH/$1.png" ];then
+    feh "$TPATH/$1.png" --title `basename "$TPATH/$1.png"`
+  fi
+  exit
+}
+
+while getopts "haft" arg; do
+  case $arg in
+    h) help;;
+    a) show timetable-a;;
+    f) show timetable-f;;
+    t) show timetable;;
+    *) echo "Invalid Option."
+        help;;
+  esac
+done
+
+show timetable

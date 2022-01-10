@@ -1,0 +1,13 @@
+# I update the PATH Variable for the system
+
+[ -d "$HOME/.local/bin" ] && export PATH=$PATH:"$HOME/.local/bin"
+[ -d "$HOME/Personal/bin" ] && export PATH=$PATH:"$HOME/Personal/bin"
+
+# custom Language Program Support e.g golang Flutter ....
+
+[ -d "$HOME/Android/Sdk/platform-tools" ] && export PATH=$PATH:"$HOME/Android/Sdk/platform-tools"
+[ -d "$HOME/.cargo/bin" ] && export PATH=$PATH:"$HOME/.cargo/bin"
+[ -d "$HOME/go/bin" ] && export PATH=$PATH:"$HOME/go/bin"
+[ -d "$HOME/flutter/bin" ] && export PATH=$PATH:"$HOME/flutter/bin"
+[ -d "$HOME/.fnm" ] && export PATH="/home/niksingh710/.fnm":$PATH
+

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+QRPATH=$1
+
+if [[ $# -eq 1 ]];then
+	if [[ $1 == "--help" || $1 == "-h" ]];then
+		cat << EOF
+This command will read any png file with a qr code (mostly that is created with python qr module)
+and will remove the unrequired text from zbarimg that it gives while reading.
+EOF
+		exit
+	elif [[ ! -f $1 ]];then
+		echo "The argument does not contain a file "
+		exit
+	else
+	        QRPATH=$1	
+		if ! command -v zbarimg &> /dev/null;then
+			echo "zbarimg is not installed! 💥"
+			exit
+		else
+			eval zbarimg $QRPATH -q | sed 's/QR-Code://'
+		fi
+	fi
+else
+	echo "Invalid Amount of arguments given!"
+fi

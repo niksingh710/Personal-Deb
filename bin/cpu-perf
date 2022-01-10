@@ -1,0 +1,11 @@
+#!/bin/bash
+# Make Sure you add '%<username> ALL=ALL NOPASSWD:ALL' as this need to get sudo passwd
+# changing cpu governer to make it rock on
+if hash cpupower 2>/dev/null;then
+  sudo cpupower frequency-set -g performance >/dev/null
+fi
+
+# disabling turbo mode to make cpu silent.
+if [ -f /sys/devices/system/cpu/intel_pstate/no_turbo ];then
+  echo "0" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo >/dev/null
+fi

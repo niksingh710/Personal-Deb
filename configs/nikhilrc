@@ -1,0 +1,16 @@
+# Hello i am a custom rc file 
+# created by Nikhil Singh (https://t.me/niksingh710) (https://github.com/niksingh710)
+
+CONFIGDIR="$HOME/Personal/configs"
+
+[ -f "$CONFIGDIR/pathmod" ] && source "$CONFIGDIR/pathmod"
+[ -f "$CONFIGDIR/aliases" ] && source "$CONFIGDIR/aliases"
+
+
+if hash fnm 2>/dev/null;then
+	eval "$(fnm env)"
+fi
+
+if hash colorscript 2>/dev/null;then
+  colorscript -r
+fi
