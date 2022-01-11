@@ -57,6 +57,11 @@ if hash fm6000 2>/dev/null;then
   alias sneofetch='fm6000 -r -c random'
 fi
 
+if hash batcat 2>/dev/null;then
+  alias cat='batcat'
+  alias ccat='bat -p'
+fi
+
 if hash speed-test 2>/dev/null;then
   alias speedtest='speed-test'
 fi
