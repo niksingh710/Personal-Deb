@@ -50,7 +50,7 @@ while getopts "hr:p:" arg; do
 		r) remove $OPTARG;;
 		a) add $OPTARG;;
 		*) echo "Invalid option"
-			help 1;;
+			help;;
 	esac
 done
 
