@@ -59,7 +59,9 @@ fi
 
 if hash batcat 2>/dev/null;then
   alias cat='batcat'
-  alias ccat='bat -p'
+  alias ccat='batcat -p'
+  alias cpu-governer='ccat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+  alias cpu-turbo='[ $(ccat /sys/devices/system/cpu/intel_pstate/no_turbo) = 0 ] && echo "Turbo: On" || echo "Turbo: Off"'
 fi
 
 if hash speed-test 2>/dev/null;then

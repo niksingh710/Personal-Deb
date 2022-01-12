@@ -6,6 +6,8 @@ CONFIGDIR="$HOME/Personal/configs"
 [ -f "$CONFIGDIR/pathmod" ] && source "$CONFIGDIR/pathmod"
 [ -f "$CONFIGDIR/aliases" ] && source "$CONFIGDIR/aliases"
 
+[ -d "$HOME/go" ] && export GOPATH="$HOME/go"
+[ -d "$HOME/go/bin" ] && export GOBIN="$HOME/go/bin"
 
 if hash fnm 2>/dev/null;then
 	eval "$(fnm env)"
