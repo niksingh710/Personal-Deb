@@ -11,3 +11,4 @@
 [ -d "$HOME/flutter/bin" ] && export PATH=$PATH:"$HOME/flutter/bin"
 [ -d "$HOME/.fnm" ] && export PATH="/home/niksingh710/.fnm":$PATH
 
+# path added via script
