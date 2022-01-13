@@ -1,5 +1,5 @@
 # Starship prompt
-eval "$(starship init zsh)"
+hash starship 2>/dev/null && eval "$(starship init zsh)"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
