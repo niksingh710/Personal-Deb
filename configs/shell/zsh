@@ -1,0 +1,7 @@
+# Starship prompt
+eval "$(starship init zsh)"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f "/usr/share/zsh/functions/Completion/Debian/_apt-fast" ] && source /usr/share/zsh/functions/Completion/Debian/_apt-fast

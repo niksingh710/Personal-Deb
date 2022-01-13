@@ -1,19 +1,53 @@
 # This file is a list of aliases used by Nikhil Singh
 
+# System based aliases
+MYLOC=`dirname $0`
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+
+  case $ID in
+
+    "ubuntu" | "pop" | "debian" | "neon" )
+      # echo "I am ubuntu" 
+      [ -f "$MYLOC/alias/ubuntu" ] && source $MYLOC/alias/ubuntu
+      ;;
+
+    "fedora")
+     # echo "Iam Fedora"
+     ;;
+
+    "opensuse-tumbleweed" | "opensuse-leap")
+      # echo "echo i am opensuse"
+      ;;
+
+    "arch" | "manjaro")
+      # echo "I am arch"
+      ;;
+
+    "void")
+      # echo "void"
+      ;;
+  esac
+fi
+
+# X11 alias 
+if [ $XDG_SESSION_TYPE = 'x11' ];then
+  alias xdg-open="xdg-open 2>/dev/null"
+  if hash xclip 2>/dev/null;then
+    alias copy='xclip -selection clipboard'
+    alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'
+    alias tb='nc termbin.com 9999 | pcopy'
+  fi
+fi
+
+
+
 # common System aliases
-alias install="sudo apt install -y $@"
-alias in="install $@"
-alias uninstall="sudo apt purge -y --remove $@"
-alias un="uninstall $@"
-alias update="sudo apt update && apt list --upgradeable"
-alias upgrade="sudo apt upgrade -y"
-alias clean="sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean"
 alias myip="echo `hostname -I | awk '{print $1}'`"
 alias mygip="curl -s http://ipecho.net/plain; echo"
 alias myips='echo "local : `myip` \nglobal: `mygip`"'
 alias python="python3"
 alias pip="pip3"
-alias xdg-open="xdg-open 2>/dev/null"
 alias cpufreq='watch -n1 -t "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias cpu-governer='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
 alias cpu-turbo='[ $(cat /sys/devices/system/cpu/intel_pstate/no_turbo) = 0 ] && echo "Turbo: On" || echo "Turbo: Off"'
@@ -66,12 +100,6 @@ fi
 
 if hash speed-test 2>/dev/null;then
   alias speedtest='speed-test'
-fi
-
-if hash xclip 2>/dev/null;then
-  alias copy='xclip -selection clipboard'
-  alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'
-  alias tb='nc termbin.com 9999 | pcopy'
 fi
 
 

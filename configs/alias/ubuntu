@@ -1,0 +1,13 @@
+_PAKMGR=apt
+
+if hash apt-fast 2>/dev/null;then
+  _PAKMGR=apt-fast
+fi
+
+alias install="sudo $_PAKMGR install -y $@"
+alias in="install $@"
+alias uninstall="sudo $_PAKMGR purge -y --remove $@"
+alias un="uninstall $@"
+alias update="sudo $_PAKMGR update && $_PAKMGR list --upgradeable"
+alias upgrade="sudo $_PAKMGR upgrade -y"
+alias clean="sudo $_PAKMGR autoremove -y && sudo $_PAKMGR autoclean -y && sudo $_PAKMGR clean"

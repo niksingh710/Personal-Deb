@@ -26,3 +26,18 @@ if hash vim 2>/dev/null;then
     fi
   fi
 fi
+
+MYLOC=`dirname $0`
+# shell sourcing (These all get sourced on the basis of which shell in process)
+if [ $(ps -p $$ | awk '{if(NR==2) print $4}') = 'bash' ];then
+    [ -f "$MYLOC/shell/bash" ] && source "$MYLOC/shell/bash"
+fi
+
+if [ $(ps -p $$ | awk '{if(NR==2) print $4}') = 'zsh' ];then
+   [ -f "$MYLOC/shell/zsh" ] && source "$MYLOC/shell/zsh"
+fi
+
+if [ $(ps -p $$ | awk '{if(NR==2) print $4}') = 'fish' ];then
+  # echo "This is fish shell"
+# i don't use fish shell but this if will handle it
+fi
