@@ -20,7 +20,7 @@ if [ -f /etc/os-release ]; then
       # echo "echo i am opensuse"
       ;;
 
-    "arch" | "manjaro")
+    "arch" | "manjaro" | "endeavoursos")
       # echo "I am arch"
       ;;
 
@@ -29,18 +29,6 @@ if [ -f /etc/os-release ]; then
       ;;
   esac
 fi
-
-# X11 alias 
-if [ $XDG_SESSION_TYPE = 'x11' ];then
-  alias xdg-open="xdg-open 2>/dev/null"
-  if hash xclip 2>/dev/null;then
-    alias copy='xclip -selection clipboard'
-    alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'
-    alias tb='nc termbin.com 9999 | pcopy'
-  fi
-fi
-
-
 
 # common System aliases
 alias myip="echo `hostname -I | awk '{print $1}'`"
@@ -61,6 +49,17 @@ alias ssh-start="sudo service ssh start"
 alias ssh-stop="sudo service ssh stop"
 alias ssh-restart="sudo service ssh restart"
 alias ssh-terminate="pkill -o -u $USER sshd"
+
+
+# X11 alias 
+if [ $XDG_SESSION_TYPE = 'x11' ];then
+  alias xdg-open="xdg-open 2>/dev/null"
+  if hash xclip 2>/dev/null;then
+    alias copy='xclip -selection clipboard'
+    alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'
+    alias tb='nc termbin.com 9999 | pcopy'
+  fi
+fi
 
 if hash exa 2>/dev/null;then    
   alias l='exa -lahF --color=always --icons --sort=size --group-directories-first'
