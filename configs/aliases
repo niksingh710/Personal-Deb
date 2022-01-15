@@ -54,6 +54,7 @@ alias ssh-terminate="pkill -o -u $USER sshd"
 # X11 alias 
 if [ $XDG_SESSION_TYPE = 'x11' ];then
   alias xdg-open="xdg-open 2>/dev/null"
+  alias open="xdg-open 2>/dev/null"
   if hash xclip 2>/dev/null;then
     alias copy='xclip -selection clipboard'
     alias pcopy='xclip -selection clipboard && xclip -selection clipboard -o'

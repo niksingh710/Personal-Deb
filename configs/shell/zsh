@@ -1,7 +1,11 @@
-# Starship prompt
-hash starship 2>/dev/null && eval "$(starship init zsh)"
 
+[ -f "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh" ] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f "/usr/share/zsh/functions/Completion/Debian/_apt-fast" ] && source /usr/share/zsh/functions/Completion/Debian/_apt-fast
+
+
+# Starship prompt
+hash starship 2>/dev/null && eval "$(starship init zsh)"
